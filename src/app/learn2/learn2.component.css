@@ -1,0 +1,130 @@
+/* Genel stil ayarları */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+/* Soru ve cevapların düzenlenmesi */
+.question-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d1d1; /* Hafif çerçeve ekleyin */
+  margin-bottom: 20px;
+}
+
+.question-container h5 {
+  font-size: 18px;
+}
+
+.question-container span {
+  font-size: 16px;
+  line-height: 1.5;
+  display: block;
+  margin-top: 10px;
+}
+
+/* Butonların düzenlenmesi */
+.butonlar button {
+  margin: 5px;
+}
+
+/* Uyarı mesajlarının düzenlenmesi */
+.alert-danger {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* İstatistiklerin düzenlenmesi */
+.statistics {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Görsel öğelerin ortalanması */
+.d-flex.align-items-center {
+  display: flex;
+  align-items: center;
+}
+
+
+/* Seçenekler konteynerinin düzenlenmesi */
+.options-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d1d1d1;
+  margin-bottom: 20px;
+}
+
+.options-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.options-container select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.options-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.options-container button:hover {
+  background-color: #0056b3;
+}
+
+
+/* İlerleme çubuğu stilleri */
+.progress {
+  height: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* İlerlemenin durumuna göre renklendirme */
+.progress-bar.bg-danger {
+  background-color: #dc3545;
+}
+
+.progress-bar.bg-warning {
+  background-color: #ffc107;
+}
+
+.progress-bar.bg-success {
+  background-color: #28a745;
+}
+.boldgreen{
+  font-weight: bold;
+  background-color: rgb(167, 236, 161);
+  padding: 5px;
+}

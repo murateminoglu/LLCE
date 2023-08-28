@@ -1,0 +1,187 @@
+  <div class="alert alert-dark" role="alert">
+    Check All Questions
+    You have 7 Wrong Answers ==> {{learnwrong }}
+  </div>
+
+  <div *ngIf="control" class="options-container">
+    <label for="questionType">Select the question type:</label>
+    <select id="questionType" [(ngModel)]="selectedQuestionType">
+      <option value="all">All</option>
+      <option value="mc">Multiple Choice</option>
+      <option value="sc">Single Choice</option>
+      <option value="fi">Fill-In</option>
+    </select>
+    <button (click)="startQuiz()">Start Quiz</button>
+  </div>
+  <div class="progress">
+    <ng-container *ngIf="ql101all.length > 0">
+      <div class="progress-bar" role="progressbar" [style.width]="calculateProgressWidth()" 
+           [attr.aria-valuenow]="currentQnr + 1" aria-valuemin="1" [attr.aria-valuemax]="ql101all.length"></div>
+    </ng-container>
+  </div>
+
+  <div class="question-container" *ngIf="quizStarted">
+    <div *ngIf="!this.finish" >
+      <div *ngIf="!gotolearnmode"  >    
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <button type="button" class="btn btn-outline-dark" (click)="firstQuery()">first</button>
+            </div>
+            <div class="col-sm">
+              <button type="button" class="btn btn-outline-secondary" (click)="lastQuery()">last</button>
+            </div>
+          </div>
+        </div>
+
+      
+        <h5>Question:  {{ query.qid }} <br /></h5>
+      
+        <span *ngFor="let qtext of ql101all[currentQnr].qtxt; let i = index">
+          {{ qtext }}<span *ngIf="i !== ql101all[currentQnr].qtxt.length - 1"> </span>
+        </span>
+        <!-- MC-->
+        <div *ngIf="query.qtyp === 'mc'">
+          <div *ngFor="let ans of query.qanswers; index as ansind">
+            <span *ngIf="showanswers">
+              <span *ngIf="ans.correct">
+                <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
+                  <input type="checkbox" (click)="ans.givenans = !ans.givenans" checked disabled />
+                  {{ ansind + 1 }}: {{ ans.txt }} 
+                  {{ ans.givenans }}
+                </span>
+              </span>
+              <span *ngIf="!ans.correct">
+                <span *ngIf="queryNrAnswersShow === query.qid">
+                  <input type="checkbox" (click)="toggleGivenAnswer(ansind)" disabled />
+                  {{ ansind + 1 }}: {{ ans.txt }}
+                  {{ ans.givenans }}
+                </span>
+              </span>
+              <span *ngIf="queryNrAnswersShow != query.qid">
+                <input type="checkbox" (click)="toggleGivenAnswer(ansind)" disabled />
+                {{ ansind + 1 }}: {{ ans.txt }} 
+                {{ ans.givenans }}
+              </span>
+            </span>
+            <span *ngIf="!showanswers">
+              <div *ngIf="ans.givenans">
+                <input type="checkbox" (click)="toggleGivenAnswer(ansind)" checked />
+                {{ ansind + 1 }}: {{ ans.txt }} 
+                {{ ans.givenans }}
+              </div>
+              <div *ngIf="!ans.givenans">
+                <input type="checkbox" (click)="toggleGivenAnswer(ansind)" />
+                {{ ansind + 1 }}: {{ ans.txt }} 
+                {{ ans.givenans }}
+              </div>
+            </span>
+          </div>
+        </div>
+        <!-- SC -- SC-->
+        <div *ngIf="query.qtyp === 'sc'">
+          <div *ngFor="let ans of query.qanswers; index as ansind">
+            <span *ngIf="showanswers">
+              <span *ngIf="ans.correct">
+                <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
+                  <input type="radio" (click)="ans.givenans = !ans.givenans" checked disabled />
+                  {{ ansind + 1 }}: {{ ans.txt }} 
+                  {{ ans.givenans }}
+                </span>
+              </span>
+              <span *ngIf="!ans.correct">
+                <span *ngIf="queryNrAnswersShow === query.qid">
+                  <input type="radio" (click)="changeGivenAnswer(ansind)" disabled />
+                  {{ ansind + 1 }}: {{ ans.txt }} 
+                  {{ ans.givenans }}
+                </span>
+              </span>
+              <span *ngIf="queryNrAnswersShow != query.qid">
+                <input type="radio" (click)="changeGivenAnswer(ansind)" disabled />
+                {{ ansind + 1 }}: {{ ans.txt }} 
+                {{ ans.givenans }}
+              </span>
+            </span>
+            <span *ngIf="!showanswers">
+              <div *ngIf="ans.givenans">
+                <input type="radio" (click)="changeGivenAnswer(ansind)" checked />
+                {{ ansind + 1 }}: {{ ans.txt }} 
+                {{ ans.givenans }}
+              </div>
+              <div *ngIf="!ans.givenans">
+                <input type="radio" (click)="changeGivenAnswer(ansind)" />
+                {{ ansind + 1 }}: {{ ans.txt }} 
+                {{ ans.givenans }}
+              </div>
+            </span>
+          </div>
+        </div>
+        <!-- FI - FillIn -- FI-->
+        <div *ngIf="query.qtyp === 'fi'">
+          <div *ngFor="let ans of query.qanswers; index as k">
+            <span *ngIf="showanswers">
+              <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
+                {{ k + 1 }}: {{ ans.txt }}
+              </span>
+              <span *ngIf="queryNrAnswersShow != query.qid">
+                {{ k + 1 }}:
+                <input type="text" value="{{ ans.txt }}" />
+              </span>
+            </span>
+            <div>
+              <span *ngIf="correctInput">
+                <span *ngIf="!showanswers">
+                  {{ k + 1 }}:
+                  <input type="text" #myinput (keyup)="keyinput(myinput.value)" value="{{ query.qgiventxt }}"
+                    class="boldgreen"  (keyup.enter)="nextQuery()" /></span>
+              </span>
+              <span *ngIf="!correctInput">
+                <span *ngIf="!showanswers">
+                  {{ k + 1 }}:
+                  <input type="text" #myinput (keyup)="keyinput(myinput.value)" value="{{ query.qgiventxt }}"
+                     (keyup.enter)="nextQuery()" /></span>
+              </span>
+            </div>
+          </div>
+      
+          <hr />
+        </div>
+        <div *ngIf="showWrongAnswerWarning===true" class="alert alert-danger d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+          <div>
+            Wrong answer! please try again...
+          </div>
+        </div>
+      </div>
+      <div *ngIf="gotolearnmode"  class="gotolearnmode">
+       <h1>Correct Answer: {{this.learncorrect}}</h1>
+       <h1>Wrong Answer:{{this.learnwrong}}</h1>
+       <h1>Unanswer: {{this.learnunanswered}}</h1>
+        <h2 class="dad">You had already 7 Wrong Answers</h2>
+        <h5>Please go to LEARN mode</h5>
+
+    <br>
+    <button class="btn btn-primary" routerLink="/learn">I go to Learn Mode!</button>
+      </div >
+      
+      <div class="butonlar">
+        <button type="button" class="btn btn-outline-success" 
+       (click)="prevQuery()">back</button>
+      <button type="button" class="btn btn-outline-primary" 
+       (click)="toggleAnswers(query.qid)">check</button>
+      <button type="button" class="btn btn-outline-success" 
+     (click)="nextQuery()">next</button>
+      <button type="button" class="btn btn-outline-success" 
+       (click)="refreshPage()">RESET</button>
+      <button type="button" class="btn btn-outline-secondary" 
+       (click)="finishExam()">Finish Exam</button>
+      </div>      
+    </div>
+    <br> <br>
+  </div>
+
+ <div *ngIf="this.finish" class="statistics">
+  <h1>Correct Answer: {{this.learncorrect}}</h1>
+  <h1>Wrong Answer:{{this.learnwrong}}</h1>
+  <h1>Unanswer: {{this.learnunanswered}}</h1>
+ </div>

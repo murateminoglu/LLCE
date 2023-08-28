@@ -1,0 +1,92 @@
+/* .container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  nav {
+    margin-top: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  a.active {
+    font-weight: bold;
+  }
+  
+   */
+   /* Stil ayarları */
+   .container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #f39c12;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-btn {
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    display: none;
+    z-index: 1;
+    min-width: 100px;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f39c12;
+    color: #fff;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Diğer CSS kodlarınız */
+
+.dropdown-btn::after {
+  content: " ▼";
+}
+
+/* Diğer CSS kodlarınız */

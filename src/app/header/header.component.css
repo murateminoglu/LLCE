@@ -1,0 +1,23 @@
+
+.navbar {
+    background-color: #f8f9fa; 
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: #343a40; 
+  }
+  
+  .navbar-nav {
+    margin-left: auto;
+  }
+  
+  .nav-link {
+    color: #343a40; 
+  }
+  
+  
+  .container {
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,30 @@
+<h2 style="text-align: center">Learning All Questions</h2>
+
+<div *ngFor="let query of qArray">
+  <h5>Question: {{ query.qid }} <br /></h5>
+  <div *ngFor="let qt of query.qtxt">
+    <span *ngIf="qt[0] === ' '"> _ {{ qt }} <br /> </span>
+    <span *ngIf="qt[0] != ' '"> {{ qt }} <br /> </span>
+  </div>
+  <div *ngFor="let ans of query.qanswers; index as k">
+    <span *ngIf="showanswers">
+      <span *ngIf="ans.correct">
+        <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
+          {{ k + 1 }}: {{ ans.txt }}
+        </span>
+      </span>
+      <span *ngIf="!ans.correct">
+        <span *ngIf="queryNrAnswersShow === query.qid">
+          {{ k + 1 }}: {{ ans.txt }}
+        </span>
+      </span>
+      <span *ngIf="queryNrAnswersShow != query.qid">
+        {{ k + 1 }}: {{ ans.txt }}
+      </span>
+  </span>
+    <span *ngIf="!showanswers"> {{ k + 1 }}: {{ ans.txt }} </span>
+  </div>
+  <button type="button" class="btn btn-outline-primary" style="margin-left: 80%" (click)="toggleAnswers(query.qid)">check</button>
+  <hr />
+</div>
+

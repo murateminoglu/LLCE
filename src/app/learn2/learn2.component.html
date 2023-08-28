@@ -1,0 +1,49 @@
+<h2 style="text-align: center">Learning One Question</h2>
+
+
+<div class="question-container"><h5>Question: {{ query.qid }} <br /></h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <button type="button" class="btn btn-outline-dark" (click)="firstQuery()">first</button>
+      </div>
+      <div class="col-sm">
+        <button type="button" class="btn btn-outline-secondary" (click)="lastQuery()">last</button>
+      </div>
+    </div>
+  </div>
+<div *ngFor="let qt of query.qtxt">
+  <span *ngIf="qt[0] === ' '"> _ {{ qt }} <br /> </span>
+  <span *ngIf="qt[0] != ' '"> {{ qt }} <br /> </span>
+</div>
+  <div *ngFor="let ans of query.qanswers; index as k">
+    <span *ngIf="showanswers">
+      <span *ngIf="ans.correct">
+        <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
+          {{ k + 1 }}: {{ ans.txt }}
+        </span>
+      </span>
+      <span *ngIf="!ans.correct">
+        <span *ngIf="queryNrAnswersShow === query.qid">
+          {{ k + 1 }}: {{ ans.txt }}
+        </span>
+      </span>
+      <span *ngIf="queryNrAnswersShow != query.qid">
+        {{ k + 1 }}: {{ ans.txt }}
+      </span>
+    </span>
+    <span *ngIf="!showanswers"> {{ k + 1 }}: {{ ans.txt }} </span>
+  </div>
+  <div class="butonlar">
+    <button type="button" class="btn btn-outline-success" style="margin-left: 18%
+    " (click)="prevQuery()">back</button>
+    <button type="button" class="btn btn-outline-primary" style="margin-left: 15%
+    " (click)="toggleAnswers(query.qid)">check</button>
+    <button type="button" class="btn btn-outline-success" style="margin-left: 15%
+    " (click)="nextQuery()">next</button>
+</div>
+</div>
+
+
+
+
