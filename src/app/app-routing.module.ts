@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'learn', component: LearnComponent},
   { path: 'check', component: CheckComponent },
   { path: 'exam', component: ExamComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Varsayılan yol olarak "/home" belirlendi
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
 
 ];
 

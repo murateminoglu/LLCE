@@ -25,25 +25,10 @@ export class Qlpic101Service implements OnInit {
     this.qlpic101mc = qlpic101mcJson
     this.qlpic101sc = qlpic101scJson
     this.qlpic101fi = qlpic101fiJson
-
-
-    // this.qlpic101mc.map(q => q.qanswers.map(a => a.givenans = false));
-    // this.qlpic101sc.map(q => q.qanswers.map(a => a.givenans = false));
-    // this.qlpic101fi.map(q => q.qanswers.map(a => a.givenans = false));
-    // this.qlpic101fi.map(q => q.qgiventxt = '');
-    // // now for all qtyp mixed
-    // this.qlpic101all.map(q => q.qanswers.map(a => a.givenans = false));
-    // this.qlpic101all.map(q => q.qgiventxt = '');
   }
 
   ngOnInit(): void {
-    // this.qlpic101all = qlpic101allJson
-    // this.qlpic101mc = qlpic101mcJson
-    // this.qlpic101sc = qlpic101scJson
-    // this.qlpic101fi = qlpic101fiJson
   }
-
-
 
   initGivenAnswers() {
     try {

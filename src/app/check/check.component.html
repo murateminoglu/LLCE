@@ -48,20 +48,20 @@
                 <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
                   <input type="checkbox" (click)="ans.givenans = !ans.givenans" checked disabled />
                   {{ ansind + 1 }}: {{ ans.txt }} 
-                  {{ ans.givenans }}
+                  
                 </span>
               </span>
               <span *ngIf="!ans.correct">
                 <span *ngIf="queryNrAnswersShow === query.qid">
                   <input type="checkbox" (click)="toggleGivenAnswer(ansind)" disabled />
                   {{ ansind + 1 }}: {{ ans.txt }}
-                  {{ ans.givenans }}
+                  
                 </span>
               </span>
               <span *ngIf="queryNrAnswersShow != query.qid">
                 <input type="checkbox" (click)="toggleGivenAnswer(ansind)" disabled />
                 {{ ansind + 1 }}: {{ ans.txt }} 
-                {{ ans.givenans }}
+                
               </span>
             </span>
             <span *ngIf="!showanswers">
@@ -86,32 +86,32 @@
                 <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
                   <input type="radio" (click)="ans.givenans = !ans.givenans" checked disabled />
                   {{ ansind + 1 }}: {{ ans.txt }} 
-                  {{ ans.givenans }}
+                  
                 </span>
               </span>
               <span *ngIf="!ans.correct">
                 <span *ngIf="queryNrAnswersShow === query.qid">
                   <input type="radio" (click)="changeGivenAnswer(ansind)" disabled />
                   {{ ansind + 1 }}: {{ ans.txt }} 
-                  {{ ans.givenans }}
+                  
                 </span>
               </span>
               <span *ngIf="queryNrAnswersShow != query.qid">
                 <input type="radio" (click)="changeGivenAnswer(ansind)" disabled />
                 {{ ansind + 1 }}: {{ ans.txt }} 
-                {{ ans.givenans }}
+                
               </span>
             </span>
             <span *ngIf="!showanswers">
               <div *ngIf="ans.givenans">
                 <input type="radio" (click)="changeGivenAnswer(ansind)" checked />
                 {{ ansind + 1 }}: {{ ans.txt }} 
-                {{ ans.givenans }}
+                
               </div>
               <div *ngIf="!ans.givenans">
                 <input type="radio" (click)="changeGivenAnswer(ansind)" />
                 {{ ansind + 1 }}: {{ ans.txt }} 
-                {{ ans.givenans }}
+                
               </div>
             </span>
           </div>

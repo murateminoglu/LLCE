@@ -22,8 +22,8 @@ export class LearnComponent {
     private qlpic101all: Qlpic101Service
   ) {
     this.qlpic101alla = this.qlpic101all.getallAll()
-    // this.qArray = this.qlpic101all.getallAll()
-    // console.log(this.qlpic101alla)
+    
+    
     for (let i = 0; i < this.qlpic101alla.length; i++) {
       this.qArray.push(this.qlpic101alla[i])
     }

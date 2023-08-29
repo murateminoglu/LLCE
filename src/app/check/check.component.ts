@@ -12,10 +12,6 @@ import { LceQuery } from '../interfaces/lcequery';
 export class CheckComponent implements OnInit{
   ql101all: LceQuery[] = []
   lArray: LceQuery[] = []
-  correctQuestions: LceQuery[] = [];
-  incorrectQuestions: LceQuery[] = [];
-  unansweredQuestions: LceQuery[] = [];
-
 
   showanswers = false
   queryNrAnswersShow = -1
@@ -23,7 +19,6 @@ export class CheckComponent implements OnInit{
   query: LceQuery;
   currentQnr = 0;
   correctInput: boolean = false;
-
  
   gotolearnmode: boolean
   finish: boolean=false
@@ -35,9 +30,7 @@ export class CheckComponent implements OnInit{
   control: boolean = true;
   quizStarted: boolean = false;
   selectedQuestionType: string = 'all'
-  statistic: Statistics
-
- 
+  statistic: Statistics 
 
   constructor(
     private ql101srvc: Qlpic101Service,
@@ -76,7 +69,6 @@ export class CheckComponent implements OnInit{
   else if (this.selectedQuestionType === 'sc') {
     this.ql101all = this.ql101srvc.getallSc()
   }
-
   }  
 
   refreshPage() {
@@ -87,8 +79,7 @@ export class CheckComponent implements OnInit{
     this.currentQnr = 0
     this.query = this.ql101all[this.currentQnr]
     this.showanswers = false   
-  }
-  
+  }  
 
   prevQuery() {
     if (0 < this.currentQnr) {
@@ -96,8 +87,7 @@ export class CheckComponent implements OnInit{
       this.query = this.ql101all[this.currentQnr]
     }
     this.showanswers = false
-    this.refreshStats()
-  
+    this.refreshStats()  
   }
   refreshStats() {
     this.statistic = this.stats.calcStatsAll()
@@ -172,17 +162,15 @@ export class CheckComponent implements OnInit{
         } else { 
           this.learncorrect++
           this.setNextQuestion()
-          // }
         }
       } else {
         this.learnunanswered++
         this.setNextQuestion()
-      }
-      
+      }      
     }
     this.refreshStats()
-
   }
+  
   setNextQuestion() {
     if (this.currentQnr < this.ql101all.length - 1) {
       this.currentQnr++
@@ -198,8 +186,7 @@ export class CheckComponent implements OnInit{
     this.query = this.ql101all[this.currentQnr]
     this.showanswers = false
     this.refreshStats()
-  }
-  
+  }  
 
   toggleAnswers(qid: number): void {
     if (this.queryNrAnswersShow != qid) {

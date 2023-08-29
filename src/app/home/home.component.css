@@ -1,23 +1,5 @@
-/* .container {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  nav {
-    margin-top: 20px;
-  }
-  
-  a {
-    text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  a.active {
-    font-weight: bold;
-  }
-  
-   */
-   /* Stil ayarları */
+
+ 
    .container {
     text-align: center;
     padding: 20px;
@@ -83,10 +65,9 @@
     display: block;
   }
   
-  /* Diğer CSS kodlarınız */
 
 .dropdown-btn::after {
   content: " ▼";
 }
 
-/* Diğer CSS kodlarınız */
+

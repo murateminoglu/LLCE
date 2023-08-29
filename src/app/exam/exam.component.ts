@@ -40,6 +40,7 @@ export class ExamComponent {
     this.ql101Mc.initGivenAnswers()
 
     this.statistic = this.stats.calcStatsAll()
+    
 
     this.currentQnr = 0
     this.query = this.ql101all[this.currentQnr]
@@ -51,6 +52,7 @@ export class ExamComponent {
     this.quizStarted = true;
     this.currentQnr = 0;
     this.filterQuestions();
+    
     
   }
   filterQuestions() {
@@ -65,15 +67,32 @@ export class ExamComponent {
     else if (this.selectedQuestionType === 'sc') {
       this.ql101all = this.ql101Mc.getallSc()
     }
+    this.shuffleArray(this.ql101all)
     this.ql101all = this.ql101all.slice(0, this.selectedQuestionCount);
   }
   
-  shuffleArray(array: any[]) {
-    for (let i = array.length - 1; i > 0; i--) {
+  shuffleArray(ql101all: any[]): any[]{
+    for (let i = ql101all.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+      [ql101all[i], ql101all[j]] = [ql101all[j], ql101all[i]];
     }
-  return array;
+  return ql101all;
+}
+
+getRandomQuestionNumbers(totalCount: number, desiredCount: number): number[] {
+  // Eğer istenen soru sayısı toplam soru sayısından büyükse, tüm soru numaralarını döndür
+  if (desiredCount >= totalCount) {
+    return Array.from({ length: totalCount }, (_, index) => index + 1);
+  }
+
+  // Tüm soru numaralarını içeren bir dizi oluştur
+  const questionNumbers = Array.from({ length: totalCount }, (_, index) => index + 1);
+
+  // Diziyi karıştır
+  const shuffledQuestionNumbers = this.shuffleArray(questionNumbers);
+
+  // İstenen sayıda rastgele soru numarasını al
+  return shuffledQuestionNumbers.slice(0, desiredCount);
 }
 
   keyinput(myinput: string) {

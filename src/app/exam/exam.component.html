@@ -1,4 +1,3 @@
-
 <div class="alert alert-dark" role="alert">
   Exam Questions <br>
 </div>
@@ -29,12 +28,9 @@
             <button type="button" class="btn btn-outline-secondary" (click)="lastQuery()">last</button>
           </div>
         </div>
-      </div>
-      
-      
-      
-
+      </div>               
       <br><br>
+
       <p>Question: {{ query.qid }} <br /></p>
 
       <span *ngFor="let qtext of ql101all[currentQnr].qtxt; let i = index">
@@ -47,33 +43,29 @@
             <span *ngIf="ans.correct">
               <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
                 <input type="checkbox" (click)="ans.givenans = !ans.givenans" checked disabled />
-                {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-                {{ ans.givenans }}
+                {{ ansind + 1 }}: {{ ans.txt }} 
+                
               </span>
             </span>
             <span *ngIf="!ans.correct">
               <span *ngIf="queryNrAnswersShow === query.qid">
                 <input type="checkbox" (click)="toggleGivenAnswer(ansind)" disabled />
-                {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-                {{ ans.givenans }}
+                {{ ansind + 1 }}: {{ ans.txt }} 
               </span>
             </span>
             <span *ngIf="queryNrAnswersShow != query.qid">
               <input type="checkbox" (click)="toggleGivenAnswer(ansind)" disabled />
-              {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-              {{ ans.givenans }}
+              {{ ansind + 1 }}: {{ ans.txt }} 
             </span>
           </span>
           <span *ngIf="!showanswers">
             <div *ngIf="ans.givenans">
               <input type="checkbox" (click)="toggleGivenAnswer(ansind)" checked />
-              {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-              {{ ans.givenans }}
+              {{ ansind + 1 }}: {{ ans.txt }} 
             </div>
             <div *ngIf="!ans.givenans">
               <input type="checkbox" (click)="toggleGivenAnswer(ansind)" />
-              {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-              {{ ans.givenans }}
+              {{ ansind + 1 }}: {{ ans.txt }} 
             </div>
           </span>
         </div>
@@ -113,33 +105,28 @@
             <span *ngIf="ans.correct">
               <span *ngIf="queryNrAnswersShow === query.qid" class="boldgreen">
                 <input type="radio" (click)="ans.givenans = !ans.givenans" checked disabled />
-                {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-                {{ ans.givenans }}
+                {{ ansind + 1 }}: {{ ans.txt }}
               </span>
             </span>
             <span *ngIf="!ans.correct">
               <span *ngIf="queryNrAnswersShow === query.qid">
                 <input type="radio" (click)="changeGivenAnswer(ansind)" disabled />
-                {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-                {{ ans.givenans }}
+                {{ ansind + 1 }}: {{ ans.txt }} 
               </span>
             </span>
             <span *ngIf="queryNrAnswersShow != query.qid">
               <input type="radio" (click)="changeGivenAnswer(ansind)" disabled />
-              {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-              {{ ans.givenans }}
+              {{ ansind + 1 }}: {{ ans.txt }}
             </span>
           </span>
           <span *ngIf="!showanswers">
             <div *ngIf="ans.givenans">
               <input type="radio" (click)="changeGivenAnswer(ansind)" checked />
-              {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-              {{ ans.givenans }}
+              {{ ansind + 1 }}: {{ ans.txt }}
             </div>
             <div *ngIf="!ans.givenans">
               <input type="radio" (click)="changeGivenAnswer(ansind)" />
-              {{ ansind + 1 }}: {{ ans.txt }} ++ {{ ans.correct }}:
-              {{ ans.givenans }}
+              {{ ansind + 1 }}: {{ ans.txt }} 
             </div>
           </span>
         </div>
@@ -150,8 +137,7 @@
       <button type="button" class="btn btn-success"  (click)="examEnd()">
         End Exam
       </button>
-      </div>
-      
+      </div>      
       <hr />
     </div>
   </div>
