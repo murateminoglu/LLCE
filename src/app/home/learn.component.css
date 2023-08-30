@@ -1,0 +1,37 @@
+/* Ortalama ve stiller */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Soru stilleri */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h5 {
+  margin-top: 10px;
+}
+
+/* Cevap stilleri */
+.qtxt span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.boldgreen {
+  font-weight: bold;
+  background-color: rgb(167, 236, 161);
+  padding: 5px;
+}
+
+/* Buton stilleri */
+.btn-outline-primary {
+  margin-left: 80%;
+}
