@@ -31,7 +31,7 @@
       </div>               
       <br><br>
 
-      <p>Question: {{ query.qid }} <br /></p>
+      <p>Question: {{ ql101all[currentQnr].qid }} <br /></p>
 
       <span *ngFor="let qtext of ql101all[currentQnr].qtxt; let i = index">
         {{ qtext }}<span *ngIf="i !== ql101all[currentQnr].qtxt.length - 1"> </span>
@@ -178,7 +178,7 @@
   <div *ngIf="showResultQuestions">
     <h3>Answered questions with correct/wrong answers!</h3>
     <div *ngFor="let query of ql101all">
-      <p>Question: {{ query.qid }} | Typ: {{ query.qtyp }} <br /></p>
+      <p>Question: {{ ql101all[currentQnr].qid }} | Typ: {{ query.qtyp }} <br /></p>
 
       <span *ngFor="let qtext of ql101all[currentQnr].qtxt; let i = index">
         {{ qtext }}<span *ngIf="i !== ql101all[currentQnr].qtxt.length - 1"> </span>

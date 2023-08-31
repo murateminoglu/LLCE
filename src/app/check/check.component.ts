@@ -54,9 +54,9 @@ export class CheckComponent implements OnInit{
     this.query = this.lArray[this.currentQnr];
   }
   startQuiz() {this.control = false
+    this.ql101srvc.initGivenAnswers()
     this.filterQuestions();
     this.quizStarted = true;
-    this.currentQnr = 0;
   }
   filterQuestions(){if (this.selectedQuestionType === 'all') {
     this.ql101all = this.ql101srvc.getallAll()

@@ -49,9 +49,9 @@ export class ExamComponent {
   }
   startQuiz() {
     this.control = false
-    this.quizStarted = true;
-    this.currentQnr = 0;
+    this.ql101Mc.initGivenAnswers()
     this.filterQuestions();
+    this.quizStarted = true;
     
     
   }
